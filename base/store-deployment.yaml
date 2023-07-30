@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: interface-store
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: interface-store
+  template:
+    metadata:
+      labels:
+        app: interface-store
+    spec:
+      containers:
+        - name: interface-store
+          image: 138778713921.dkr.ecr.ap-northeast-2.amazonaws.com/store-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9003

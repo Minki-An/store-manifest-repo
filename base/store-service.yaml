@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: interface-store
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: "/api/store"
+spec:
+  selector:
+    app: interface-store
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 9003
+      protocol: TCP

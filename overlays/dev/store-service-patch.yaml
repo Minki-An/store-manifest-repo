@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: interface-store
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: "/api/store"
+  labels:
+    env: store
+spec:
+  selector:
+    app: interface-store

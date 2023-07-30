@@ -1,0 +1,23 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: "interface-store-ingress"
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/group.name: green
+    alb.ingress.kubernetes.io/group.order: '4'
+spec:
+  rules:
+  - http:
+        paths:
+          - path: /api/store
+            pathType: Prefix
+            backend:
+              service:
+                name: "interface-store"
+                port:
+                  number: 8080

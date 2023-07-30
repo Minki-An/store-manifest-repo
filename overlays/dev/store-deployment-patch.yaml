@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: interface-store
+  namespace: default
+  labels:
+    env: store
+spec:
+  selector:
+    matchLabels:
+      app: interface-store
+  template:
+    metadata:
+      labels:
+        app: interface-store
